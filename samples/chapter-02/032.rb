@@ -5,3 +5,4 @@ a2 = a1 || 2
 puts a2
 
 puts "test"
+puts "test2"
