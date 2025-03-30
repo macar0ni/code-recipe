@@ -25,4 +25,9 @@ jobs:
         run: gem install rubocop
 
       - name: Run RuboCop
-        run: rubocop
+        run: rubocop -A
+
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          branch: rubocop-fixes
+          title: "rubocop自動修正内容適用"
