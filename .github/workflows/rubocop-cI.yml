@@ -1,0 +1,28 @@
+name: RuboCop CI
+
+on:
+  push:
+    paths:
+      - '**.rb'
+  pull_request:
+    paths:
+      - '**.rb'
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.4'
+
+      - name: Install RuboCop
+        run: gem install rubocop
+
+      - name: Run RuboCop
+        run: rubocop
