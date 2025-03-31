@@ -1,6 +1,7 @@
 name: RuboCop CI
  
 on:
+   workflow_dispatch:
    push:
      paths:
        - '**.rb'
