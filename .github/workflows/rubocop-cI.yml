@@ -1,33 +1,29 @@
 name: RuboCop CI
-
+ 
 on:
-  push:
-    paths:
-      - '**.rb'
-  pull_request:
-    paths:
-      - '**.rb'
-
+   workflow_dispatch:
+   push:
+     paths:
+       - '**.rb'
+   pull_request:
+     paths:
+       - '**.rb'
+ 
 jobs:
-  rubocop:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3.4'
-
-      - name: Install RuboCop
-        run: gem install rubocop
-
-      - name: Run RuboCop
-        run: rubocop -A
-
-      - uses: peter-evans/create-pull-request@v5
-        with:
-          branch: rubocop-fixes
-          title: "rubocop自動修正内容適用"
+   rubocop:
+     runs-on: ubuntu-latest
+ 
+     steps:
+       - name: Checkout code
+         uses: actions/checkout@v4
+ 
+       - name: Set up Ruby
+         uses: ruby/setup-ruby@v1
+         with:
+           ruby-version: '3.3.4'
+ 
+       - name: Install RuboCop
+         run: gem install rubocop
+ 
+       - name: Run RuboCop
+         run: rubocop
